@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  app:
+    image: docker.io/bitnami/laravel:10
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app
+    # depends_on:
+    #   - database
+  
+  database:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      environment:
+      MYSQL_ROOT_PASSWORD: secret
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "7000:8080"
