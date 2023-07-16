@@ -8,15 +8,14 @@ services:
       - "8000:8000"
     volumes:
       - ./src:/app
-    # depends_on:
-    #   - database
-  
+    depends_on:
+      - database
+
   database:
     image: mysql
     ports:
       - "3306:3306"
     environment:
-      environment:
       MYSQL_ROOT_PASSWORD: secret
 
   adminer:
